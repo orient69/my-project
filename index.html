@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+</head>
+<body style="background-color:#EFFFFD;">
+    <h1 style="text-align: center; font-size:50px"><u>ToDo Lists</u></h1>
+    <div>
+        <form action="/add" method="post">
+            <label style="font-size:20px"><strong><em>What is to be done--></em></strong></label>
+            <input type="text" name="title" placeholder="Tasks">
+            <br>
+            <button type="submit" class="btn btn-outline-primary">ADD</button>
+
+        </form>
+    </div>
+    <div style="text-align: center;">
+        {% for todo in todos %}
+            <p><strong style="font-size:25px">{{ todo.title }}</strong> -->
+
+            {% if todo.complete == False %}
+                <span>❌❌❌❌❌</span>
+            {% else %}
+                <span>✅✅✅✅✅</span>
+            {% endif %}
+                </p>
+        {% if todo.complete == False %}
+            <button type="submit"style="background-color:#0AA1DD;"><a href="/update/{{ todo.id }}">Completed</a></button>
+        {% else %}
+            <button type="submit"style="background-color:#0AA1DD;"><a href="/update/{{ todo.id }}">Not Completed</a></button>
+        {% endif %}
+        <button  type="submit"style="background-color:red;"><a href="/delete/{{ todo.id }}" background-color="black">Delete</a></button>
+        {% endfor %}
+
+    </div>
+</body>
+</html>
